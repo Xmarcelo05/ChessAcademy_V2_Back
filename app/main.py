@@ -100,6 +100,10 @@ def actualizar_curso(curso_id: int, curso_actualizado: CursoCreate, db: Session 
     db.refresh(curso_bd)
     return curso_bd
 
+@app.get("/api/prueba-automatica")
+def prueba_automatica():
+    return {"mensaje": "¡Hola! El servidor está actualizado. Hora actual: 11:20 AM (11 de junio)"}
+
 @app.delete("/api/cursos/{curso_id}")
 def eliminar_curso(curso_id: int, db: Session = Depends(get_db)):
     curso_bd = db.query(CursoDB).filter(CursoDB.id == curso_id).first()
